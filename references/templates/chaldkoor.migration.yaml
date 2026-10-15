@@ -1,0 +1,57 @@
+# Machine-readable migration state. Record names/metadata only; NEVER store secrets or access tokens.
+schema_version: 1
+project:
+  name: unknown
+  repository: unknown
+  source_root: .
+  baseline_commit: unknown
+  working_tree_clean: unknown
+source:
+  frameworks: []
+  languages: []
+  package_manager: unknown
+  runtime: unknown
+  build_command: unknown
+  start_command: unknown
+target:
+  framework: nextjs
+  router: app
+  language: typescript
+  runtime: nodejs
+migration:
+  mode: audit-first
+  status: not_started
+  strategy: incremental
+  preserve_source_until_validated: true
+  preserve_backend_by_default: true
+  production_changes_authorized: false
+inventory:
+  routes: []
+  critical_workflows: []
+  auth_providers: []
+  roles_and_permissions: []
+  data_stores: []
+  database_migrations: []
+  file_storage: []
+  integrations: []
+  webhooks: []
+  background_jobs: []
+  environment_variables: [] # names and usage locations only; never values
+  assets: []
+  tests: []
+  known_failures: []
+decisions: []
+open_questions: []
+validation:
+  dependency_install: not_run
+  lint: not_run
+  typecheck: not_run
+  tests: not_run
+  production_build: not_run
+  runtime_health: not_run
+  route_parity: not_run
+  auth_and_authorization: not_run
+  data_integrity: not_run
+  secret_hygiene: not_run
+  preview_smoke_test: not_run
+  rollback_ready: not_run
