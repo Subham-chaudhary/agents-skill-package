@@ -5,8 +5,10 @@ A gate can be `pass`, `fail`, `blocked`, `not-run`, or `not-applicable`. Never m
 ## Gate 0 — Source preservation
 
 - [ ] Repository, branch and baseline commit are recorded where available.
+- [ ] The repo strategy (same repo on `migrate/chalkdoor`, or a new private repo) is recorded.
 - [ ] Pre-existing uncommitted changes are preserved.
-- [ ] Migration changes are isolated or the reason they are not is documented.
+- [ ] Earlier commits were not rewritten, or the user asked for it and a backup branch exists.
+- [ ] Migration changes are isolated, or the reason they are not is documented.
 - [ ] No production resource has been changed without explicit approval.
 
 ## Gate 1 — Inventory completeness
@@ -31,7 +33,9 @@ A gate can be `pass`, `fail`, `blocked`, `not-run`, or `not-applicable`. Never m
 
 ## Gate 3 — Code and build
 
-- [ ] Dependency install succeeds using the documented package manager.
+- [ ] `bun install` succeeds, `bun.lock` is the only lockfile, and the locked versions match the baseline (except for agreed upgrades).
+- [ ] Next.js App Router + TypeScript, `output: "standalone"`, and a live `/api/health` route.
+- [ ] `.gitignore`, `.gitattributes` and `.env.example` are in place, and `chalkdoor_agent/` is ignored.
 - [ ] Lint passes or baseline/new failures are explicitly distinguished.
 - [ ] Type-check passes or failures are reported with context.
 - [ ] Tests pass or missing tests are acknowledged.
@@ -42,6 +46,8 @@ A gate can be `pass`, `fail`, `blocked`, `not-run`, or `not-applicable`. Never m
 ## Gate 4 — Security and data
 
 - [ ] No secret values entered source, commits, client bundles, migration reports or logs.
+- [ ] The full-history secret scan was run. Any secrets found were rotated by the user.
+- [ ] The GitHub repo is private, unless the user confirmed public twice.
 - [ ] Server-only service clients are not importable from Client Components.
 - [ ] Authorization is enforced server-side, not solely by hiding UI.
 - [ ] External inputs are validated server-side.

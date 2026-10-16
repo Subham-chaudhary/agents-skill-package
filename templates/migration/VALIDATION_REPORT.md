@@ -18,11 +18,14 @@
 |---|---|---|---|
 | Source preservation | | | |
 | Inventory complete | | | |
+| Version-control state (.gitignore, .gitattributes, history secret scan) | | | |
+| Bun install, single `bun.lock`, versions match baseline | | | |
+| GitHub repo private | | | |
 | Lint | | | |
 | Type check | | | |
 | Tests | | | |
 | Production build | | | |
-| Runtime start/health | | | |
+| Runtime start + `/api/health` | | | |
 | Route parity | | | |
 | Auth/authorization | | | |
 | Database/data access | | | |

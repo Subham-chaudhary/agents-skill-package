@@ -2,7 +2,8 @@
 
 ## Goal and scope
 
-- Target framework: Next.js App Router + TypeScript
+- Target: Next.js App Router + TypeScript + Bun, one server (Chalkdoor standard)
+- Repo strategy and migration branch:
 - Source framework:
 - Included routes/features:
 - Excluded routes/services:
@@ -28,38 +29,48 @@
 
 ### Phase 0 — Preservation and baseline
 
-- [ ] Record Git status and baseline SHA.
-- [ ] Preserve pre-existing changes.
-- [ ] Record current commands and failures.
+- [ ] Record Git status, baseline SHA and repo strategy.
+- [ ] Preserve pre-existing changes (snapshot commit only with permission).
+- [ ] Record current commands and failures with the current package manager.
 
-### Phase 1 — Target skeleton and shared shell
+### Phase 1 — Version-control state
 
-- [ ] Add the smallest usable Next.js structure.
-- [ ] Keep existing visual system and dependencies unless incompatible.
-- [ ] Verify the application starts before moving additional features.
+- [ ] `.gitignore`, `.gitattributes`, `.env.example`; untrack ignored files.
+- [ ] Full-history secret scan (count only); the user rotates any secrets found.
 
-### Phase 2 — Route/feature migration
+### Phase 2 — Bun
 
-- [ ] Migrate one coherent route/feature at a time.
-- [ ] Keep source routes/APIs available while validating.
-- [ ] Add/adjust tests and update the parity matrix for each slice.
+- [ ] `bun install` migrates the lockfile; locked versions match the baseline.
+- [ ] Old lockfile removed; scripts run through `bun run`; behavior unchanged.
 
-### Phase 3 — Integrations and server/client boundaries
+### Phase 3 — Next.js, route by route
+
+- [ ] Smallest usable Next.js App Router shell (or an upgrade to Next.js 16 first).
+- [ ] Keep the existing visual system and dependencies unless incompatible.
+- [ ] Migrate one coherent route or feature at a time; keep the legacy code until it passes.
+- [ ] Add or adjust tests and update the parity matrix for each slice.
+
+### Phase 4 — Integrations and server/client boundaries
 
 - [ ] Confirm auth/session behavior.
 - [ ] Confirm database and file storage behavior.
 - [ ] Verify secret and public environment variable mapping.
 - [ ] Confirm external integrations/webhooks in a safe test environment.
 
-### Phase 4 — Final verification
+### Phase 5 — UI/UX (only if agreed)
+
+- [ ] Design-system adoption and UX fixes as separate slices.
+
+### Phase 6 — Final verification
 
 - [ ] Run all available quality gates.
 - [ ] Verify all mapped routes or record gaps.
 - [ ] Smoke-test the development preview.
 - [ ] Write `VALIDATION_REPORT.md`.
 
-### Phase 5 — Release (separate approval)
+### Phase 7 — Cutover and release (separate approvals)
 
+- [ ] Merge `migrate/chalkdoor` into `main` after the user agrees; update the README line.
 - [ ] Record the source SHA/build artifact.
 - [ ] Confirm rollback path.
 - [ ] Obtain explicit production promotion approval.

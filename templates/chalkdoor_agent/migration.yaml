@@ -1,0 +1,65 @@
+# Chalkdoor migration state. Local only. Used only when project.segment is migration.
+# Record names and metadata only. NEVER secret values or tokens.
+schema_version: 3
+
+repo:
+  strategy: unknown            # same-repo | new-repo-keep-history | new-repo-fresh
+  source: unknown              # owner/repo or local path
+  baseline_sha: unknown
+  migration_branch: migrate/chalkdoor
+  dirty_tree_at_start: unknown # true | false; how it was preserved goes in notes
+
+source:
+  frameworks: []
+  languages: []
+  package_manager: unknown     # npm | yarn | pnpm | bun | none
+  lockfile: unknown
+  runtime: unknown
+  build_command: unknown
+  start_command: unknown
+  origin_tool: unknown         # lovable | bolt | v0 | replit | cursor | hand-written | unknown
+
+lane: unknown                  # row from skills/migration/references/source-framework-playbook.md
+
+transitions:                   # not-started | in-progress | done | skipped (with reason in decisions)
+  version_control: not-started
+  bun: not-started
+  nextjs: not-started
+  integrations: not-started
+  ui_ux: not-started
+  cache_components: skipped
+
+inventory:
+  routes: []                   # - {path, purpose, auth, target, action: keep|wrap|port|rewrite|retire-with-approval|unknown, status}
+  critical_workflows: []
+  auth_providers: []
+  roles_and_permissions: []
+  data_stores: []
+  database_migrations: []
+  file_storage: []
+  integrations: []
+  webhooks: []
+  background_jobs: []
+  environment_variables: []    # - {name, used_in, public: true|false}  NAMES ONLY
+  assets: []
+  tests: []
+  known_failures: []
+
+baseline:                      # results BEFORE any change: pass | fail | not-run | not-available
+  install: not-run
+  lint: not-run
+  typecheck: not-run
+  tests: not-run
+  build: not-run
+  smoke: not-run
+
+gates:                         # skills/migration/references/quality-gates.md
+  source_preservation: not-run
+  inventory_complete: not-run
+  application_behavior: not-run
+  code_and_build: not-run
+  security_and_data: not-run
+  release_readiness: not-run
+
+production_changes_authorized: false
+notes: []
