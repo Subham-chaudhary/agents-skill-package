@@ -1,0 +1,66 @@
+# --- Chalkdoor standard .gitignore (merge with what create-next-app wrote) ---
+
+# dependencies
+/node_modules
+
+# Next.js and build output
+/.next/
+/out/
+/build
+/dist
+next-env.d.ts
+*.tsbuildinfo
+
+# env: only .env.example is committed (names, no values)
+.env*
+!.env.example
+
+# keys and certificates
+*.pem
+*.key
+*.p12
+
+# testing
+/coverage
+/playwright-report/
+/test-results/
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# other package managers' lockfiles (bun.lock is the only lockfile)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# large media and archives: keep in storage, not in git
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.zip
+*.rar
+*.7z
+*.psd
+
+# platform and tooling
+.vercel
+supabase/.temp/
+supabase/.branches/
+
+# OS and editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+
+# agents (local only)
+chalkdoor_agent/
+.claude/worktrees/
+.claude/settings.local.json
