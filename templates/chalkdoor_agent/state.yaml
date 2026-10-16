@@ -1,0 +1,59 @@
+# Chalkdoor project state. Local only: chalkdoor_agent/ is git-ignored.
+# Agents read this at session start and update it at the end of each task.
+# Record names and facts only. NEVER secret values.
+schema_version: 3
+
+package:
+  version: "0.3.0"          # root SKILL.md metadata.version
+  ref: unknown              # git -C chalkdoor_agent/package rev-parse --short HEAD
+
+project:
+  name: unknown
+  segment: unknown          # new | migration | standard
+  readme_line: false
+  agent_pointer: false      # Chalkdoor block in CLAUDE.md / AGENTS.md
+
+github:
+  mode: unknown             # full | local | self  (skills/github)
+  account_ready: unknown
+  gh_authenticated: unknown
+  remote: none              # owner/repo
+  visibility: private       # change only with the double confirmation in skills/github
+  default_branch: main
+
+stack:
+  next: unknown
+  typescript: unknown       # e.g. "tsc 7.0.2 + api 6.0.3"
+  bun: unknown
+  node: unknown
+  router: app
+  bundler: turbopack
+  output: standalone
+  cache_components: unknown # true for new projects; migrations decide later
+  ui_system: unknown        # shadcn/ui | user-design | carbon | mui | ...
+  data: unknown             # supabase | neon-drizzle | none | <existing>
+  auth: unknown             # supabase-auth | clerk | better-auth | none | <existing>
+  payments: none            # stripe | none
+  hosting: chalkdoor
+
+conventions:                # true once applied AND verified
+  gitignore: false
+  gitattributes: false
+  env_example: false
+  scripts: false
+  tool_exclusions: false    # chalkdoor_agent in tsconfig exclude + ESLint ignores
+  health_route: false
+
+features: []                # - {name, status: planned|in-progress|done, branch, owner, notes}
+decisions: []               # - {date, decision, reason}
+open_questions: []          # - {question, asked: date}
+worktrees: []               # - {path, branch, owner}
+
+checks:                     # pass | fail | not-run, plus the date of the last run
+  lint: not-run
+  typecheck: not-run
+  test: not-run
+  build: not-run
+  health: not-run
+
+session_log: []             # keep the last 10: - {date, summary}

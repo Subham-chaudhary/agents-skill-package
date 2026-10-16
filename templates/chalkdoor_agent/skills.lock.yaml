@@ -1,0 +1,13 @@
+# Third-party skills used in this project. Local only.
+# Pin every entry to a full commit SHA. Reuse the local copy when ref matches; no network needed.
+schema_version: 1
+skills: []
+# - name: example-skill
+#   source: https://github.com/<owner>/<repo>
+#   path: skills/example-skill          # folder inside the source repo
+#   ref: <full 40-char commit sha>
+#   local: chalkdoor_agent/skills/example-skill
+#   entry: SKILL.md                     # the one file to read first
+#   installed: 2026-10-19
+#   reviewed: true                      # SKILL.md and any scripts were read before use
+#   used_for: one line
